@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Learning Spring Boot: Spring-a-gram</title>
+</head>
+<body>
+    <div>
+        <h3 th:text="${page.number + 1} + ' of ' + ${page.totalPages}" ></h3>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th><th>Name</th><th>Image</th><th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="image : ${page.content}">
+            <td th:text="${image.id}"></td>
+            <td th:text="${image.name}"></td>
+            <td><img th:src="@{'/images/' + ${image.name} + '/raw'}" /></td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
